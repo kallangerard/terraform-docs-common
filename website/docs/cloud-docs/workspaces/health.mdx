@@ -22,6 +22,7 @@ Working with health assessments requires the following permissions:
 - To view health status for a workspace, you need read access to that workspace.
 - To change organization health settings, you must be an [organization owner](/terraform/cloud-docs/users-teams-organizations/permissions#organization-owners).
 - To change a workspace’s health settings, you must be an [administrator for that workspace](/terraform/cloud-docs/users-teams-organizations/permissions#workspace-admins).
+- To view [on demand assessments](/terraform/cloud-docs/workspaces/health#on-demand-assessments) for a workspace, you must be an [administrator for that workspace](/terraform/cloud-docs/users-teams-organizations/permissions#workspace-admins).
 
 ## Workspace Requirements
 
@@ -59,6 +60,19 @@ A health assessment never interrupts or interferes with runs. If you start a new
 Terraform Cloud pauses health assessments if the latest run ended in an errored state. This behavior occurs for all run types, including plan-only runs and speculative plans. Once the workspace completes a successful run, Terraform Cloud restarts health assessments after 24 hours.
 
 Health assessments may take longer to complete when you enable health assessments in many workspaces at once or your workspace contains a complex configuration with many resources.
+
+### On Demand Assessments
+
+-> **Note:** On Demand Assessments are only available through browser sessions. If the workspace requirements are not satisfied, you should see one or more error messages on the page indicating the blockers to enable health assessments. The button will be disabled until the requirements are satisfied.
+
+
+If you are an administrator for the workspace and all [workspace requirements](/terraform/cloud-docs/workspaces/health#workspace-requirements) are satisfied, a **Start health assessment** button is available on the Health pages with Ready status.
+
+  ![On Demand Assessments Screenshot: Start health assessment button](/img/docs/on-demand-assessments.png)
+
+You should see a success or error message box in the left-bottom corner of the page, after clicking the button to indicate if the assessment was triggered. The button will be disabled when the assessments are in progress indicating the status. 
+Based on factors like the size of the workspace and network latency, the assessment could take several minutes.
+
 
 ### Concurrency
 
